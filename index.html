@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linktree on Instagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1E4A1A;
+    --mint:#6ECFB0;
+    --mint-soft:#DDF3EB;
+    --yellow:#FFE600;
+    --pink:#ED93B1;
+    --pink-soft:#FBE3EB;
+    --paper:#F4FAF6;
+    --ink:#1E2B1C;
+    --muted:#5C6B5A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .page{max-width:880px;margin:0 auto;padding:56px 32px 72px}
+  .brand{
+    font-family:'Lora',serif;font-weight:600;color:var(--forest);
+    font-size:15px;letter-spacing:.08em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;margin-bottom:48px
+  }
+  .brand span.dot{width:12px;height:12px;border-radius:50%;background:var(--mint);display:inline-block;box-shadow:16px 0 0 var(--pink)}
+  .brand b{margin-left:18px;font-weight:600}
+  h1{
+    font-family:'Lora',serif;font-weight:500;color:var(--forest);
+    font-size:42px;line-height:1.15;margin-bottom:20px;max-width:640px
+  }
+  .lede{font-size:17px;color:var(--muted);max-width:600px;margin-bottom:24px}
+  .scene{
+    background:var(--mint-soft);border-left:4px solid var(--mint);
+    padding:22px 26px;border-radius:0 14px 14px 0;margin:32px 0 56px;
+    font-family:'Lora',serif;font-style:italic;font-size:17px;color:var(--forest)
+  }
+  .part{margin-bottom:64px;page-break-inside:avoid}
+  .part-label{
+    font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--forest);background:var(--yellow);display:inline-block;
+    padding:4px 12px;border-radius:20px;margin-bottom:14px
+  }
+  h2{font-family:'Lora',serif;font-weight:500;font-size:28px;color:var(--forest);margin-bottom:28px}
+  .grid{display:grid;grid-template-columns:1fr 240px;gap:44px;align-items:start}
+  ol.steps{list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;position:relative;padding-left:48px;margin-bottom:20px}
+  ol.steps li::before{
+    content:counter(s);position:absolute;left:0;top:0;
+    width:32px;height:32px;border-radius:50%;
+    background:var(--forest);color:#fff;font-weight:500;font-size:14px;
+    display:flex;align-items:center;justify-content:center
+  }
+  ol.steps strong{font-weight:600;color:var(--forest)}
+  .tap{background:var(--yellow);padding:0 6px;border-radius:4px;font-weight:500;color:var(--ink)}
+
+  /* phone illustrations */
+  .phone{
+    width:240px;border-radius:32px;background:var(--forest);padding:10px;
+    box-shadow:0 18px 40px rgba(30,74,26,.18)
+  }
+  .screen{background:#FFFDF8;border-radius:24px;padding:18px 16px 22px;min-height:420px;font-size:12px;position:relative}
+  .notch{width:70px;height:6px;border-radius:6px;background:#E3E8E1;margin:0 auto 16px}
+  .s-title{font-weight:600;font-size:13px;text-align:center;margin-bottom:14px;color:var(--ink)}
+  .row{border-bottom:1px solid #ECEFEA;padding:10px 4px;display:flex;justify-content:space-between;color:var(--ink)}
+  .row small{color:var(--muted)}
+  .hl{
+    background:var(--yellow);border-radius:8px;outline:2px solid var(--forest);
+    outline-offset:1px;font-weight:600;position:relative
+  }
+  .hl::after{
+    content:"Tap here";position:absolute;right:-6px;top:-22px;
+    background:var(--pink);color:var(--ink);font-size:10px;font-weight:600;
+    padding:2px 8px;border-radius:10px
+  }
+  .avatar{width:56px;height:56px;border-radius:50%;background:var(--mint);margin:4px auto 10px}
+  .lt-btn{background:var(--mint-soft);border-radius:20px;padding:10px;text-align:center;margin-bottom:8px;color:var(--forest);font-weight:500}
+  .add-btn{background:var(--forest);color:#fff;border-radius:20px;padding:10px;text-align:center;margin:10px 0 14px;font-weight:500}
+  .field{border:1px solid #DCE3DA;border-radius:10px;padding:9px 10px;margin-bottom:10px;color:var(--muted)}
+  .field.fill{color:var(--ink)}
+  .ig-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .ig-head .avatar{margin:0;width:50px;height:50px;background:var(--pink)}
+  .stats{display:flex;gap:10px;font-size:10px;color:var(--muted)}
+  .stats b{display:block;color:var(--ink);font-size:12px}
+  .bio{margin:6px 0 8px;line-height:1.5}
+  .link-line{color:#2D5BA8;font-weight:500}
+  .btns{display:flex;gap:6px;margin-top:12px}
+  .btns div{flex:1;background:#EEF1EC;border-radius:8px;padding:7px;text-align:center;font-weight:500}
+  .caption{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+  .tip{
+    background:var(--pink-soft);border-radius:14px;padding:22px 26px;
+    margin-top:8px;page-break-inside:avoid
+  }
+  .tip h3{font-family:'Lora',serif;font-weight:500;color:var(--forest);font-size:20px;margin-bottom:6px}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid #D4E6DC;font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+
+  @media (max-width:700px){
+    .grid{grid-template-columns:1fr}
+    .phone{margin:0 auto}
+    h1{font-size:32px}
+  }
+  @media print{
+    .page{padding:28px 24px}
+    .part{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="brand"><span class="dot"></span><b>The Influence Lab</b></div>
+
+  <h1>All your links, one tap from your Instagram profile</h1>
+  <p class="lede">A simple guide to setting up Linktree and adding it to your Instagram business account, so anyone visiting your profile can reach everything you offer.</p>
+
+  <div class="scene">Someone finds you on Instagram, likes what they see and wants to know more. They tap the link under your bio and a clean page opens with your website, your book, your newsletter and a way to book a call. No searching, no dead ends.</div>
+
+  <!-- PART 1 -->
+  <section class="part">
+    <div class="part-label">Part 1</div>
+    <h2>Set up your Linktree</h2>
+    <div class="grid">
+      <ol class="steps">
+        <li>Open Chrome and go to <strong>linktr.ee</strong>, then tap <span class="tap">Sign up</span>. The free plan is enough.</li>
+        <li>Choose your username. This becomes your link, for example linktr.ee/theinfluencelab, so pick something people will recognise.</li>
+        <li>You will land on the <strong>Links</strong> screen. Tap <span class="tap">Add</span>.</li>
+        <li>Paste a web address and give it a short title, such as "Book a call". Repeat for every link you want.</li>
+        <li>Drag the links into order, with the most important at the top.</li>
+        <li>Open <strong>Appearance</strong> to add your logo or photo and choose colours and fonts that match your brand.</li>
+        <li>Tap <span class="tap">Share</span> at the top right, then <span class="tap">Copy</span> to copy your Linktree address.</li>
+      </ol>
+      <div>
+        <div class="phone"><div class="screen">
+          <div class="notch"></div>
+          <div class="s-title">Links</div>
+          <div class="add-btn hl">+ Add</div>
+          <div class="field fill">Title: Book a call</div>
+          <div class="field">URL: paste your web address</div>
+          <div style="margin-top:16px">
+            <div class="lt-btn">Website</div>
+            <div class="lt-btn">The Eyes of a Pineapple</div>
+            <div class="lt-btn">Newsletter</div>
+          </div>
+        </div></div>
+        <p class="caption">Your Linktree Links screen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PART 2 -->
+  <section class="part">
+    <div class="part-label">Part 2</div>
+    <h2>Add it to Instagram</h2>
+    <div class="grid">
+      <ol class="steps">
+        <li>Open the Instagram app on your phone and go to your profile.</li>
+        <li>Tap <span class="tap">Edit profile</span>.</li>
+        <li>Tap <span class="tap">Links</span>, which sits just below the Bio box.</li>
+        <li>Tap <span class="tap">Add external link</span>.</li>
+        <li>Paste your Linktree address into the URL box and add a title such as "All my links".</li>
+        <li>Tap <span class="tap">Done</span> at the top right to save.</li>
+      </ol>
+      <div>
+        <div class="phone"><div class="screen">
+          <div class="notch"></div>
+          <div class="s-title">Edit profile</div>
+          <div class="row"><span>Name</span><small>Kay Littlehales</small></div>
+          <div class="row"><span>Username</span><small>theinfluencelab</small></div>
+          <div class="row"><span>Bio</span><small>People development</small></div>
+          <div class="row hl"><span>Links</span><small>0</small></div>
+          <div class="row"><span>Gender</span><small>›</small></div>
+          <div style="margin-top:18px" class="field">Add external link</div>
+        </div></div>
+        <p class="caption">Instagram, Edit profile screen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PART 3 -->
+  <section class="part">
+    <div class="part-label">Part 3</div>
+    <h2>Check it works</h2>
+    <div class="grid">
+      <ol class="steps">
+        <li>Go back to your profile. Your Linktree link now shows just under your bio text.</li>
+        <li>Tap it yourself and make sure your Linktree page opens with all your links.</li>
+        <li>Ask a friend to try it from their own phone, so you know it works for visitors too.</li>
+      </ol>
+      <div>
+        <div class="phone"><div class="screen">
+          <div class="notch"></div>
+          <div class="ig-head">
+            <div class="avatar"></div>
+            <div class="stats"><div><b>120</b>posts</div><div><b>2k</b>followers</div><div><b>400</b>following</div></div>
+          </div>
+          <div style="font-weight:600">The Influence Lab</div>
+          <div class="bio">Behaviour change, leadership and people development</div>
+          <div class="link-line hl">linktr.ee/theinfluencelab</div>
+          <div class="btns"><div>Edit profile</div><div>Share profile</div></div>
+        </div></div>
+        <p class="caption">How it appears on your profile</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tip">
+    <h3>Worth knowing</h3>
+    <p>When you add or change links later, you only update Linktree. The link on Instagram stays exactly the same. Links typed into the bio text itself will not be clickable, so always use the Links field.</p>
+  </div>
+
+  <footer><span>The Influence Lab</span><span>azulconsultancyltd@azul.business</span></footer>
+</div>
+</body>
+</html>
